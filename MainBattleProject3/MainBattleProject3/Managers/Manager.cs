@@ -10,7 +10,9 @@ namespace MainBattleProject3.Managers
 {
     class Manager : IManager
     {
-        private IRepository repository { get; set; }
+        public List<IGoods> goods { get; set; } = new List<IGoods>();
+
+        public IRepository repository { get; set; }
 
         public Manager()
         {
@@ -20,14 +22,14 @@ namespace MainBattleProject3.Managers
         public void AddGoods(string GoodsTitle, string Category, string Type, double PurchacePrice, double RetailPrice, string StoreTitle)
         {
             List<object> goodsParameters = new List<object> { GoodsTitle, Category, Type, PurchacePrice, RetailPrice };
-            IGoods goods = IoCContainer.ResolveObject(typeof(IGoods), goodsParameters);
+            IGoods newGoods = IoCContainer.ResolveObject(typeof(IGoods), goodsParameters);
             List<IStore> availableStores = GetAvailableStores(Category, Type);
             foreach(IStore store in availableStores)
             {
                 if (store.title == StoreTitle)
                 {
-                    repository.AddGoodsToDb(goods, store);
-                    store.PutGoodsHere(goods);
+                    repository.AddGoodsToDb(newGoods, store);
+                    store.PutGoodsHere(newGoods);
                 }
             }
         }
@@ -44,9 +46,9 @@ namespace MainBattleProject3.Managers
             }
             return availableStores;
         }
-        public List<IGoods> GetAllGoods()
+        public void GetAllGoods()
         {
-            return repository.GetGoodsFromDB();
+            goods = repository.GetGoodsFromDB();
         }
     }
 }

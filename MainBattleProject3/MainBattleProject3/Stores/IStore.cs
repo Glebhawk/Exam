@@ -11,6 +11,8 @@ namespace MainBattleProject3.Stores
         List<string> allowedCategories { get; set; }
         List<string> allowedTypes { get; set; }
 
-        public void PutGoodsHere(IGoods Goods) { }
+        public void PutGoodsHere(IGoods Goods);
+
+        public List<IGoods> GetGoods();
     }
 }

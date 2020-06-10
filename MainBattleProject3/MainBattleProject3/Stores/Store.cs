@@ -23,5 +23,10 @@ namespace MainBattleProject3.Stores
         {
             goods.Add(Goods);
         }
+
+        public List<IGoods> GetGoods()
+        {
+            return goods;
+        }
     }
 }
