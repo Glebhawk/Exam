@@ -5,16 +5,16 @@ using System.Text;
 
 namespace MainBattleProject3.IoC
 {
-    public class IoCContainer
+    public static class IoCContainer
     {
-        private readonly Dictionary<Type, Type> registeredObjects = new Dictionary<Type, Type>();
+        private static readonly Dictionary<Type, Type> registeredObjects = new Dictionary<Type, Type>();
 
-        public void RegisterObject<TypeToRegister, ConcreteType>()
+        public static void RegisterObject<TypeToRegister, ConcreteType>()
         {
             registeredObjects.Add(typeof(TypeToRegister), typeof(ConcreteType));
         }
 
-        public object ResolveObject(Type typeToResolve, IEnumerable<object> parameters)
+        public static dynamic ResolveObject(Type typeToResolve, IEnumerable<object> parameters)
         {
             Type resolvedType;
             registeredObjects.TryGetValue(typeToResolve, out resolvedType);

@@ -9,7 +9,7 @@ namespace MainBattleProject3.Repository
     interface IRepository
     {
         public void AddGoodsToDb(IGoods goods, IStore store);
-        public void GetStoresFromDb();
+        public List<IStore> GetStoresFromDb();
         public List<IGoods> GetGoodsFromDB();
     }
 }

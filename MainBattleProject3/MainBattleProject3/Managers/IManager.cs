@@ -8,8 +8,8 @@ namespace MainBattleProject3.Managers
 {
     interface IManager
     {
-        public void AddGoods(IGoods goods, IStore store);
-        public IStore GetAvailableStores(IGoods goods);
+        public void AddGoods(string GoodsTitle, string Category, string Type, double PurchacePrice, double RetailPrice, string StoreTitle);
+        public List<IStore> GetAvailableStores(string Category, string Type);
         public List<IGoods> GetAllGoods();
     }
 }

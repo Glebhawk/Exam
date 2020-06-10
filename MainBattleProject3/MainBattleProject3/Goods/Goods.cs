@@ -11,5 +11,14 @@ namespace MainBattleProject3.Goods
         public string type { get; set; }
         public double purchasePrice { get; set; }
         public double retailPrice { get; set; }
+
+        public Goods(string Title, string Category, string Type, double PurchacePrice, double RetailPrice)
+        {
+            title = Title;
+            category = Category;
+            type = Type;
+            purchasePrice = PurchacePrice;
+            retailPrice = RetailPrice;
+        }
     }
 }
